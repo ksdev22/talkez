@@ -12,6 +12,7 @@ messageSendForm.addEventListener("submit", async (event) => {
   messageSendFormInput.value = "";
 });
 
+const messageSendBtn = document.querySelector("#message-send-btn");
 const getMessageData = async (messagesId) => {
   try {
     const result = await axios.get(messageSendForm.action + `/${messagesId}`);
@@ -31,6 +32,7 @@ const getMessageData = async (messagesId) => {
       newItemContainer.append(newItem);
       messagesList.append(newItemContainer);
     }
+    messageSendBtn.disabled = false;
   } catch (err) {
     window.location.reload();
     console.log("error while fetching messages");

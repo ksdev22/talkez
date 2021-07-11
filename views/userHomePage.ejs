@@ -8,7 +8,7 @@
             </div>
             <div class="col-2 text-center">
                 <form action="/logout" method="POST" class="ms-auto">
-                    <button class="btn btn-danger py-0 px-1">Logout</button>
+                    <button class="btn btn-danger py-0 px-1 btn-disable">Logout</button>
                 </form>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     <form action="/<%= user._id %>/sendrequest" method="POST" class="text-center">
                         <input type="text" name="username" id="username" placeholder="Search Username"
                             class="my-3 form-control w-75 d-inline-block">
-                        <button class="btn btn-primary">Send Request</button>
+                        <button class="btn btn-primary btn-disable">Send Request</button>
                     </form>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-4 text-center">
                                         <form action="/<%= user._id %>/remove/<%= contact.id %>" method="POST">
-                                            <button class="btn btn-danger px-2 py-0 my-0">X</button>
+                                            <button class="btn btn-danger px-2 py-0 my-0 btn-disable">X</button>
                                         </form>
                                     </div>
                                 </div>
@@ -58,13 +58,13 @@
                                     <div class="col-3">
                                         <form action="/<%= user._id %>/accept/<%= contactAddRequest.id %>"
                                             method="POST">
-                                            <button class="btn btn-success px-1 py-0 w-100">+</button>
+                                            <button class="btn btn-success px-1 py-0 w-100 btn-disable">+</button>
                                         </form>
                                     </div>
                                     <div class="col-3">
                                         <form action="/<%= user._id %>/decline/<%= contactAddRequest.id %>"
                                             method="POST">
-                                            <button class="btn btn-danger px-1 py-0 w-100">-</button>
+                                            <button class="btn btn-danger px-1 py-0 w-100 btn-disable">-</button>
                                         </form>
                                     </div>
                                 </div>
