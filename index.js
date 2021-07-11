@@ -10,14 +10,11 @@ const bcrypt = require("bcrypt");
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://ksdev:BUSL5cLt09VFaU34@cluster0.2uid1.mongodb.net/chatAppV1?retryWrites=true&w=majority",
-    {
-      useFindAndModify: false,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect("mongodb://localhost:27017/chatAppV1", {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("database connected");
   })
@@ -84,7 +81,7 @@ app.post("/register", async (req, res) => {
     req.flash("error", "Username already exists");
     return res.redirect("/login");
   } else {
-    const hashedPw = await bcrypt.hash(password, 12);
+    const hashedPw = await bcrypt.hash(password.toString(), 12);
     const newUser = new User({ username, password: hashedPw });
     await newUser.save();
     console.log(newUser);
