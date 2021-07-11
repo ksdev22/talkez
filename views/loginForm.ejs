@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="container d-flex flex-column align-items-center">
+
+        <div class="my-5 w-100 d-flex justify-content-between">
+            <h1 class="">Welcome</h1>
+            <button id="register-btn" class="btn btn-primary h-25">Register</button>
+            <button id="login-btn" class="hide btn btn-success h-25">Login</button>
+        </div>
+
+
+
+        <form id="login-form" action="/login" method="POST" class="my-auto w-75 text-center">
+            <input type="text" name="username" id="login-username" placeholder="Username" class="form-control mb-3"
+                required>
+            <input type="password" name="password" id="login-password" placeholder="Password" class="form-control mb-3"
+                required>
+            <button class="btn btn-success w-25">Login</button>
+        </form>
+
+
+        <form id="register-form" action="/register" method="POST" class="hide my-auto w-75 text-center">
+            <input type="text" name="username" id="register-username" placeholder="Username" class="form-control mb-3"
+                required>
+            <input type="password" name="password" id="register-password" placeholder="Password"
+                class="form-control mb-3" required>
+            <input type="password" name="password" id="verify-password" placeholder="Re-enter password"
+                class="form-control mb-3" required>
+            <button id="register-form-btn" class="btn btn-primary w-25" disabled>Register</button>
+        </form>
+
+    </div>
+
+    <script src="/static/scripts/loginPage.js"></script>

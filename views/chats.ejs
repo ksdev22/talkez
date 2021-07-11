@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/static/styles/messageStyles.css">
+
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="container d-flex flex-column min-vh-100 vh-100 mt-3">
+        <form action="/<%= userOne._id %>" class="my-3">
+            <button class="btn btn-info">Back</button>
+        </form>
+        <h2 class="my-4">
+            <%= userTwo.username %>
+        </h2>
+        <div class="h-50 overflow-auto text-break border rounded px-3">
+            <div id="messages-list" class="container">
+            </div>
+        </div>
+        <form action="/<%= userOne._id %>/chats/<%= userTwo._id %>" method="POST" id="message-send-form"
+            class="text-center my-3 d-flex align-items-center justify-content-center">
+            <input type="text" name="body" id="body" placeholder="Type a message...."
+                class="form-control w-75 d-inline mx-3" required>
+            <button class="btn btn-success">Send</button>
+        </form>
+        <div data-messages-id="<%= messagesId %>" data-user="<%= userOne.username %>"></div>
+        <script src="/static/scripts/sendRecieve.js"></script>
+    </div>
