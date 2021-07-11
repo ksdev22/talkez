@@ -244,5 +244,5 @@ app.get(
     return res.send(messages);
   }
 );
-
-app.listen(80);
+let port = process.env.PORT || 80;
+app.listen(port);
