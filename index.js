@@ -30,6 +30,8 @@ app.set("views", "./views");
 app.engine("ejs", ejsMate);
 
 app.use("/static", express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   session({
     secret: "my own secret",
@@ -39,8 +41,6 @@ app.use(
   })
 );
 app.use(flash());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.get("/favicon.ico", (req, res) => {
   return res.end();
 });
@@ -55,7 +55,7 @@ app.get("/login", (req, res) => {
   res.render("loginForm.ejs");
 });
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  let { username, password } = req.body;
   const user = await User.findOne({ username });
   let verify = false;
   if (user) {
@@ -77,14 +77,14 @@ app.post("/logout", (req, res) => {
   return res.redirect("/login");
 });
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  let { username, password } = req.body;
   const user = await User.findOne({ username });
   if (user) {
     console.log("username already exists");
     req.flash("error", "Username already exists");
     return res.redirect("/login");
   } else {
-    const hashedPw = await bcrypt.hash(password.toString(), 12);
+    const hashedPw = await bcrypt.hash(password, 12);
     const newUser = new User({ username, password: hashedPw });
     await newUser.save();
     console.log(newUser);
