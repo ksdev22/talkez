@@ -6,10 +6,10 @@ const userOne = document.querySelector("div[data-user]").dataset.user;
 messageSendForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const body = messageSendFormInput.value.trim();
+  messageSendFormInput.value = "";
   const action = messageSendForm.action;
 
   await axios.post(action, { body });
-  messageSendFormInput.value = "";
 });
 
 const messageSendBtn = document.querySelector("#message-send-btn");
