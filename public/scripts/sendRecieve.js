@@ -2,6 +2,7 @@ const messagesList = document.querySelector("#messages-list");
 const messageSendForm = document.querySelector("#message-send-form");
 const messageSendFormInput = document.querySelector("#message-send-form input");
 const userOne = document.querySelector("div[data-user]").dataset.user;
+const chatsBackBtn = document.querySelector("#chats-page-back-btn");
 
 messageSendForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -10,9 +11,8 @@ messageSendForm.addEventListener("submit", async (event) => {
   const action = messageSendForm.action;
 
   await axios.post(action, { body });
-  setTimeout(() => {
-    messageSendBtn.disabled = false;
-  }, 0);
+  messageSendBtn.disabled = false;
+  chatsBackBtn.disabled = false;
 });
 
 const messageSendBtn = document.querySelector("#message-send-btn");
