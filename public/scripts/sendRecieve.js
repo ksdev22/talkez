@@ -10,6 +10,9 @@ messageSendForm.addEventListener("submit", async (event) => {
   const action = messageSendForm.action;
 
   await axios.post(action, { body });
+  setTimeout(() => {
+    messageSendBtn.disabled = false;
+  }, 0);
 });
 
 const messageSendBtn = document.querySelector("#message-send-btn");
@@ -32,11 +35,11 @@ const getMessageData = async (messagesId) => {
       newItemContainer.append(newItem);
       messagesList.append(newItemContainer);
     }
-    messageSendBtn.disabled = false;
   } catch (err) {
     window.location.reload();
     console.log("error while fetching messages");
   }
+  messagesList.parentElement.scrollTo(0, `${messagesList.offsetHeight}`);
 };
 const messagesId = document.querySelector("div[data-messages-id]").dataset
   .messagesId;
