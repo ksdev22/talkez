@@ -32,7 +32,8 @@
                             <% for(let contact of user.contacts){ %>
                                 <div class="row my-2">
                                     <div class="col-8">
-                                        <a href="/<%= user._id %>/chats/<%= contact.id %>">
+                                        <a class="home-page-contacts-link"
+                                            href="/<%= user._id %>/chats/<%= contact.id %>">
                                             <%= contact.username %>
                                         </a>
                                     </div>

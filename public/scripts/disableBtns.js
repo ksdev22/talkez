@@ -1,10 +1,11 @@
 const disButtons = document.querySelectorAll(".btn-disable");
+const disLinks = document.querySelectorAll(".home-page-contacts-link");
 
-for (let button of disButtons) {
-  button.addEventListener("click", (event) => {
+for (let toDis of [...disButtons, ...disLinks]) {
+  toDis.addEventListener("click", (event) => {
     setTimeout(() => {
-      for (let button of disButtons) {
-        button.disabled = true;
+      for (let toDis of [...disButtons, ...disLinks]) {
+        toDis.disabled = true;
       }
     }, 0);
   });
