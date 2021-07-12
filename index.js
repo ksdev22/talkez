@@ -11,7 +11,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://ksdev:BUSL5cLt09VFaU34@cluster0.2uid1.mongodb.net/chatAppV1?retryWrites=true&w=majority",
+    "",
     {
       useFindAndModify: false,
       useNewUrlParser: true,
