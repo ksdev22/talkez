@@ -5,7 +5,6 @@ const userOne = document.querySelector("div[data-user]").dataset.user;
 const chatsBackBtn = document.querySelector("#chats-page-back-btn");
 
 window.addEventListener("load", (event) => {
-  console.log("hey");
   setTimeout(() => {
     messagesList.parentElement.scrollTo(0, `${messagesList.offsetHeight}`);
   }, 1000);
