@@ -4,6 +4,13 @@ const messageSendFormInput = document.querySelector("#message-send-form input");
 const userOne = document.querySelector("div[data-user]").dataset.user;
 const chatsBackBtn = document.querySelector("#chats-page-back-btn");
 
+window.addEventListener("load", (event) => {
+  console.log("hey");
+  setTimeout(() => {
+    messagesList.parentElement.scrollTo(0, `${messagesList.offsetHeight}`);
+  }, 1000);
+});
+
 messageSendForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const body = messageSendFormInput.value.trim();
@@ -11,6 +18,7 @@ messageSendForm.addEventListener("submit", async (event) => {
   const action = messageSendForm.action;
 
   await axios.post(action, { body });
+  messagesList.parentElement.scrollTo(0, `${messagesList.offsetHeight}`);
   messageSendBtn.disabled = false;
   chatsBackBtn.disabled = false;
 });
@@ -39,7 +47,6 @@ const getMessageData = async (messagesId) => {
     window.location.reload();
     console.log("error while fetching messages");
   }
-  messagesList.parentElement.scrollTo(0, `${messagesList.offsetHeight}`);
 };
 const messagesId = document.querySelector("div[data-messages-id]").dataset
   .messagesId;
